@@ -1,0 +1,30 @@
+diff -urP lice.orig/lice/lice.wtog lice/lice/lice.wtog
+--- lice.orig/lice/lice.wtog	Thu Feb 14 02:20:50 2002
++++ lice/lice/lice.wtog	Sat Feb 16 17:34:41 2002
+@@ -32,9 +32,9 @@
+       if (_t == [W]) {//^WINDOW SHOW MW KILL;//^WINDOW LEVEL ALL}
+     }{
+       @ main.wset = pass(BCDTW $main.wset $_t)
+-      if (_t == [C]) {//^WINDOW NEW NAME CW LEVEL NONE DOUBLE OFF STATUS_FORMAT " Chat Window %>-- Type /WTOG C to quit -- " LAST;//^WINDOW LEVEL ALL}
+-      if (_t == [T]) {//^WINDOW NEW NAME TB LEVEL NONE DOUBLE OFF SIZE 0 NOSERV STATUS_FORMAT " -- LiCe Titlebar [tm] --" LAST;//^WINDOW LEVEL ALL}
+-      if (_t == [W]) {//^WINDOW NEW NAME MW LEVEL NONE DOUBLE OFF STATUS_FORMAT " Message Window %>-- Type /WTOG W to quit -- " LAST;//^WINDOW LEVEL ALL}
++      if (_t == [C]) {//^WINDOW NEW NAME CW NUMBER 99 LEVEL NONE DOUBLE OFF STATUS_FORMAT " Chat Window %>-- Type /WTOG C to quit -- " LAST;//^WINDOW LEVEL ALL}
++      if (_t == [T]) {//^WINDOW NEW NAME TB NUMBER 98 LEVEL NONE DOUBLE OFF SIZE 0 NOSERV STATUS_FORMAT " -- LiCe Titlebar [tm] --" LAST;//^WINDOW LEVEL ALL}
++      if (_t == [W]) {//^WINDOW NEW NAME MW NUMBER 97 LEVEL NONE DOUBLE OFF STATUS_FORMAT " Message Window %>-- Type /WTOG W to quit -- " LAST;//^WINDOW LEVEL ALL}
+     }
+   }
+   XECHO -B Window toggles now: +$main.wset
+diff -urP lice.orig/lice.irc lice/lice.irc
+--- lice.orig/lice.irc	Thu Feb 14 02:20:50 2002
++++ lice/lice.irc	Sat Feb 16 17:32:53 2002
+@@ -1238,8 +1238,8 @@
+   IF (main.theme != [default]) {LOAD $which(themes/$main.theme)}
+ 
+   # MSG window
+-  IF (iswset(W)) {^WINDOW NEW NAME MW LEVEL NONE DOUBLE OFF NOSERV STATUS_FORMAT " Message Window %>-- Type /WTOG W to quit -- " LAST}
+-  IF (iswset(T)) {//^WINDOW NEW NAME TB LEVEL NONE DOUBLE OFF SIZE 0 NOSERV STATUS_FORMAT " -- LiCe Titlebar [tm] --" LAST}
++  IF (iswset(W)) {^WINDOW NEW NAME MW NUMBER 97 LEVEL NONE DOUBLE OFF NOSERV STATUS_FORMAT " Message Window %>-- Type /WTOG W to quit -- " LAST}
++  IF (iswset(T)) {//^WINDOW NEW NAME TB NUMBER 98 LEVEL NONE DOUBLE OFF SIZE 0 NOSERV STATUS_FORMAT " -- LiCe Titlebar [tm] --" LAST}
+ 
+   # LiCe updates
+   IF (isset(U)) {^TIMER -REF UPDATE 60 UPDATE}
