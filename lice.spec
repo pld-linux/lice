@@ -2,7 +2,7 @@ Summary:	Very functional script for EPIC
 Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
-Release:	3	
+Release:	4	
 License:	GPL
 Group:		Applications/Communications
 Source0:	%{name}420.tar.gz
@@ -10,8 +10,9 @@ Source1:	%{name}420-polish-help.tar.gz
 Patch0:		%{name}-global.patch
 Patch1:		%{name}-windows-numbers.patch
 Patch2:		%{name}-screencrash.patch
+Patch3:		%{name}-newepic-themefix.patch
 URL:		http://lice.codehack.com/
-Requires:	epic4
+Requires:	epic4 >= 1.1.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,6 +33,7 @@ cech i w³a¶ciwo¶ci.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
