@@ -15,7 +15,7 @@ Requires:	epic4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description 
+%description
 LiCe is a script designed for the ircII and EPIC irc clients; it
 radically improves the usability of these clients, providing features
 and enhancements that pioneered the way for a whole crowd of
@@ -63,4 +63,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/epic/script/pics
 %{_datadir}/epic/script/themes
 %{_datadir}/epic/script/userhelp
-%doc doc/* 
+%doc doc/*
