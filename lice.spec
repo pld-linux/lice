@@ -12,7 +12,7 @@ Patch1:		%{name}-windows-numbers.patch
 Patch2:		%{name}-screencrash.patch
 Patch3:		%{name}-newepic-themefix.patch
 URL:		http://lice.codehack.com/
-Requires:	epic4 >= 1.1.6
+Requires:	epic4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
