@@ -1,0 +1,40 @@
+diff -urN lice.orig/lice/lice.defaults lice/lice/lice.defaults
+--- lice.orig/lice/lice.defaults	Thu Feb 14 02:20:50 2002
++++ lice/lice/lice.defaults	Thu Feb 14 02:26:58 2002
+@@ -168,4 +168,5 @@
+ ^ASSIGN main.dcc_active_limit 5
+ ^ASSIGN main.dcc_send_queue 100
+ ^ASSIGN main.dcc_get_queue 100
++EVAL @ main.stripchars = chr(132 133 $jot(144 148))
+ 
+diff -urN lice.orig/lice/lice.mtog lice/lice/lice.mtog
+--- lice.orig/lice/lice.mtog	Thu Feb 14 02:20:50 2002
++++ lice/lice/lice.mtog	Thu Feb 14 02:28:59 2002
+@@ -6,6 +6,10 @@
+ # All code by SrfRoG, unless specified. Visit http://lice.codehack.com
+ # ---------------------------------------------------------------------------
+ 
++# Baseciq/2002.02.14 - protection against screencrash using ansi codes.
++#                      require additional var $main.stripchars in lice.defaults
++#                      this idea is by Derwan. thanx!
++
+ PACKAGE LiCe
+ 
+ ALIAS _proc.setup_mtog {
+@@ -43,14 +47,14 @@
+       SWITCH ($_t) {
+         (B) {^SET BEEP_ON_MSG NONE}
+         (L) {@ main.mns = main.old_mns ? main.old_mns : 5;^ASSIGN -main.old_mns}
+-        (T) {^SET -OUTPUT_REWRITE}
++        (T) {^SET OUTPUT_REWRITE $$strip\($$main\[stripchars\] $$1-}
+       }
+     }{
+       @ main.mset = pass(12ABCHLMNOPQRTUVW $main.mset $_t)
+       SWITCH ($_t) {
+         (B) {^SET BEEP_ON_MSG MSGS}
+         (L) {@ main.old_mns = main.mns;@ main.mns = 1}
+-        (T) {^SET OUTPUT_REWRITE $$strftime\($$main.tsfmt\) $$1-}
++        (T) {^SET OUTPUT_REWRITE $$strftime\($$main.tsfmt\) $$strip\($$main\[stripchars\] $$1-)} 
+       }
+     }
+   }
