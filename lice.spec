@@ -20,12 +20,12 @@ Group(ru):	“…Ãœ÷≈Œ…—/ÎœÕÕ’Œ…À¡√……
 Group(sl):	Programi/Komunikacije
 Group(sv):	Till‰mpningar/Kommunikation
 Group(uk):	“…ÀÃ¡ƒŒ¶ “œ«“¡Õ…/ÎœÕ’Œ¶À¡√¶ß
-URL:		http://lice.codehack.com/
 Source0:	%{name}420.tar.gz
 Source1:	%{name}420-polish-help.tar.gz
 Patch0:		%{name}-global.patch
 Patch1:		%{name}-windows-numbers.patch
 Patch2:		%{name}-screencrash.patch
+URL:		http://lice.codehack.com/
 Requires:	epic4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,8 +39,8 @@ still declare it the best script ever.
 
 %description -l pl
 LiCe jest skryptem przeznaczonym do pracy z klientem irca EPIC. Jest
-to bardzo funkcjonalny i popularny skrypt, oferujacy wiele przydatnych
-cech i wla∂ciwo∂ci.
+to bardzo funkcjonalny i popularny skrypt, oferuj±cy wiele przydatnych
+cech i w≥a∂ciwo∂ci.
 
 %prep
 %setup -q -a 0 -n .irc
@@ -59,11 +59,11 @@ install themes/* $RPM_BUILD_ROOT%{_datadir}/epic/script/themes/
 install userhelp/* $RPM_BUILD_ROOT%{_datadir}/epic/script/userhelp/
 
 install -d polish-help doc/polish-help
-mv help doc/
-mv doc/help/*.gz doc/
+mv -f help doc
+mv -f doc/help/*.gz doc
 
-tar zxfvC %{SOURCE1} polish-help/
-mv polish-help/.irc/* doc/polish-help
+tar xzf %{SOURCE1} -C polish-help
+mv -f polish-help/.irc/* doc/polish-help
 ln -sf %{_datadir}/doc/%{name}-%{version}/help $RPM_BUILD_ROOT%{_datadir}/epic/script/help
 
 %clean
