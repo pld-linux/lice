@@ -1,0 +1,95 @@
+diff -urN lice.orig/lice/lice.defaults lice/lice/lice.defaults
+--- lice.orig/lice/lice.defaults	Mon Jul 10 05:55:54 2000
++++ lice/lice/lice.defaults	Thu Feb 14 02:08:58 2002
+@@ -47,12 +47,12 @@
+ SET FLOOD_WARNING OFF
+ SET FULL_STATUS_LINE ON
+ SET HELP_PAGER ON
+-EVAL SET HELP_PATH $twiddle(~/.irc/help)
++SET HELP_PATH /usr/share/epic/script/help
+ SET HELP_PROMPT ON
+ SET HELP_WINDOW OFF
+ SET HIDE_PRIVATE_CHANNELS OFF
+ SET HIGHLIGHT_CHAR BOLD
+-SET HIGH_BIT_ESCAPE 2
++SET HIGH_BIT_ESCAPE 0
+ SET HISTORY 25
+ SET HOLD_MODE OFF
+ SET INDENT ON
+@@ -61,7 +61,7 @@
+ SET INVERSE_VIDEO ON
+ SET LASTLOG 512
+ SET LASTLOG_LEVEL DCC,ALL
+-SET LOAD_PATH /usr/local/share/epic/script:~/.irc:.
++SET LOAD_PATH .:~/.irc:/usr/share/epic/script
+ SET LOG OFF
+ SET LOGFILE IRCLOG
+ SET MAIL 2
+diff -urN lice.orig/lice/lice.theme lice/lice/lice.theme
+--- lice.orig/lice/lice.theme	Sun Jul  9 20:22:45 2000
++++ lice/lice/lice.theme	Thu Feb 14 02:11:29 2002
+@@ -9,6 +9,8 @@
+ PACKAGE LiCe
+ 
+ # XXX - lame hack added to protect the innocent
++# Baseciq/2002.02.14 - few changes for global LiCe installation.
++
+ ALIAS THEME {
+   IF (@) {
+     @ :theme = which(themes/$0)
+@@ -19,8 +21,8 @@
+     ^LOAD themes/default ${([$0]==[default])?[]:theme}
+     iecho Default theme now: $0
+   }{
+-    IF (fexist(~/.irc/themes) == 1) {
+-      CD ~/.irc/themes
++    IF (fexist(/usr/share/epic/script/themes) == 1) {
++      CD /usr/share/epic/script/themes
+       @ :theme_list = glob(*)
+       ^CD ~
+       IF (strlen($theme_list)) {
+@@ -31,8 +33,7 @@
+         XECHO -B No themes found :(
+       }
+     }{
+-      XECHO -B Path not found: $twiddle(~/.irc/themes)
+-      IF (mkdir(~/.irc/themes)) {XECHO -B Failed to create: $twiddle(~/.irc/themes)}
++      XECHO -B Path not found: /usr/share/epic/script/themes
+       XECHO -B No themes found :(
+     }
+   }
+diff -urN lice.orig/lice/lice.ulw_help lice/lice/lice.ulw_help
+--- lice.orig/lice/lice.ulw_help	Sun Jul  9 21:07:33 2000
++++ lice/lice/lice.ulw_help	Thu Feb 14 02:14:07 2002
+@@ -5,6 +5,8 @@
+ # ---------------------------------------------------------------------------
+ # All code by SrfRoG, unless specified. Visit http://lice.codehack.com
+ # ---------------------------------------------------------------------------
++#
++# Baseciq/2002.02.14 - few fixes for global version of LiCe.
+ 
+ PACKAGE LiCe
+ 
+@@ -13,7 +15,7 @@
+   @ :hand = find_in_list(User $nick!$uh)
+   UNLESS (hand) {RETURN}
+   UNLESS (strlen($text)) {
+-    ^CD ~/.irc/userhelp
++    ^CD /usr/share/epic/userhelp
+     @ :help_lst = glob(*)
+     ^CD ~
+     _proc.quote_add $serv NOTICE $nick :MSG commands for $servernick($serv)\:
+@@ -21,11 +23,11 @@
+     _proc.quote_add $serv NOTICE $nick :For help on a command, /MSG $servernick($serv) !HELP <command>
+   }{
+     @ :cmd = toupper($text)
+-    IF (fexist(~/.irc/userhelp/$cmd) == -1) {
++    IF (fexist(/usr/share/epic/userhelp/$cmd) == -1) {
+       _proc.quote_add $serv NOTICE $nick :No help available on '$cmd'
+       RETURN
+     }
+-    @ :help_fd = open(~/.irc/userhelp/$cmd R)
++    @ :help_fd = open(/usr/share/epic/userhelp/$cmd R)
+     UNLESS (help_fd) {
+       _proc.quote_add $serv NOTICE $nick :Failed to open help for '$cmd'
+       RETURN
