@@ -6,7 +6,9 @@ Release:	4
 License:	GPL
 Group:		Applications/Communications
 Source0:	%{name}420.tar.gz
+# Source0-md5:	9630dad860c077f45bc9215ab92bc6ff
 Source1:	%{name}420-polish-help.tar.gz
+# Source1-md5:	554b80d2ce8691eaa1f7f682f52f318e
 Patch0:		%{name}-global.patch
 Patch1:		%{name}-windows-numbers.patch
 Patch2:		%{name}-screencrash.patch
