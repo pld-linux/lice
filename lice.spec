@@ -35,8 +35,7 @@ cech i w³a¶ciwo¶ci.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/epic/script/{lice,pics,themes}
-install -d $RPM_BUILD_ROOT%{_datadir}/epic/userhelp
+install -d $RPM_BUILD_ROOT%{_datadir}/epic/{userhelp,script/{lice,pics,themes}}
 
 install *.reasons lice.* $RPM_BUILD_ROOT%{_datadir}/epic/script/
 install lice/* $RPM_BUILD_ROOT%{_datadir}/epic/script/lice/
@@ -57,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc doc/*
 %{_datadir}/epic/script/lice.*
 %{_datadir}/epic/script/*.reasons
 %{_datadir}/epic/script/help
@@ -64,4 +64,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/epic/script/pics
 %{_datadir}/epic/script/themes
 %{_datadir}/epic/userhelp
-%doc doc/*
