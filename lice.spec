@@ -2,7 +2,7 @@ Summary:	Very functional script for EPIC
 Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
-Release:	2
+Release:	3	
 License:	GPL
 Group:		Applications/Communications
 Source0:	%{name}420.tar.gz
@@ -35,13 +35,14 @@ cech i w³a¶ciwo¶ci.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/epic/script/{lice,pics,themes,userhelp}
+install -d $RPM_BUILD_ROOT%{_datadir}/epic/script/{lice,pics,themes}
+install -d $RPM_BUILD_ROOT%{_datadir}/epic/userhelp
 
 install *.reasons lice.* $RPM_BUILD_ROOT%{_datadir}/epic/script/
 install lice/* $RPM_BUILD_ROOT%{_datadir}/epic/script/lice/
 install pics/* $RPM_BUILD_ROOT%{_datadir}/epic/script/pics/
 install themes/* $RPM_BUILD_ROOT%{_datadir}/epic/script/themes/
-install userhelp/* $RPM_BUILD_ROOT%{_datadir}/epic/script/userhelp/
+install userhelp/* $RPM_BUILD_ROOT%{_datadir}/epic/userhelp/
 
 install -d polish-help doc/polish-help
 mv -f help doc
@@ -62,5 +63,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/epic/script/lice
 %{_datadir}/epic/script/pics
 %{_datadir}/epic/script/themes
-%{_datadir}/epic/script/userhelp
+%{_datadir}/epic/userhelp
 %doc doc/*
