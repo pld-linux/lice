@@ -2,7 +2,7 @@ Summary:	Very functional script for EPIC
 Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/Communications
 Source0:	%{name}420.tar.gz
@@ -53,7 +53,7 @@ mv -f doc/help/*.gz doc
 
 tar xzf %{SOURCE1} -C polish-help
 mv -f polish-help/.irc/* doc/polish-help
-ln -sf %{_datadir}/doc/%{name}-%{version}/help $RPM_BUILD_ROOT%{_datadir}/epic/script/help
+#ln -sf %{_datadir}/doc/%{name}-%{version}/help $RPM_BUILD_ROOT%{_datadir}/epic/script/help
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*
 %{_datadir}/epic/script/lice.*
 %{_datadir}/epic/script/*.reasons
-%{_datadir}/epic/script/help
+#%{_datadir}/epic/script/help
 %{_datadir}/epic/script/lice
 %{_datadir}/epic/script/pics
 %{_datadir}/epic/script/themes
