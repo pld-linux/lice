@@ -3,6 +3,7 @@ Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
 Release:	1
+License:	GPL
 Group:		Applications/Communications
 Group(cs):	Aplikace/Komunikace
 Group(da):	Programmer/Kommunikation
@@ -19,7 +20,6 @@ Group(ru):	Приложения/Коммуникации
 Group(sl):	Programi/Komunikacije
 Group(sv):	TillДmpningar/Kommunikation
 Group(uk):	Прикладн╕ Програми/Комун╕кац╕╖
-License:	GPL
 URL:		http://lice.codehack.com/
 Source0:	%{name}420.tar.gz
 Source1:	%{name}420-polish-help.tar.gz
@@ -47,20 +47,28 @@ cech i wla╤ciwo╤ci.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d  $RPM_BUILD_ROOT%{_datadir}/epic/script/{lice,pics,themes,userhelp}
+install -d $RPM_BUILD_ROOT%{_datadir}/epic/script/{lice,pics,themes,userhelp}
+
 install *.reasons lice.* $RPM_BUILD_ROOT%{_datadir}/epic/script/
 install lice/* $RPM_BUILD_ROOT%{_datadir}/epic/script/lice/
 install pics/* $RPM_BUILD_ROOT%{_datadir}/epic/script/pics/
 install themes/* $RPM_BUILD_ROOT%{_datadir}/epic/script/themes/
 install userhelp/* $RPM_BUILD_ROOT%{_datadir}/epic/script/userhelp/
+
 install -d polish-help doc/polish-help
 mv help doc/
 mv doc/help/*.gz doc/
+
 tar zxfvC %{SOURCE1} polish-help/
 mv polish-help/.irc/* doc/polish-help
 ln -sf %{_datadir}/doc/%{name}-%{version}/help $RPM_BUILD_ROOT%{_datadir}/epic/script/help
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644,root,root,755)
 %{_datadir}/epic/script/lice.*
@@ -71,6 +79,3 @@ ln -sf %{_datadir}/doc/%{name}-%{version}/help $RPM_BUILD_ROOT%{_datadir}/epic/s
 %{_datadir}/epic/script/themes
 %{_datadir}/epic/script/userhelp
 %doc doc/* 
-
-%clean
-rm -rf $RPM_BUILD_ROOT
