@@ -2,7 +2,7 @@ Summary:	Very functional script for EPIC
 Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Group(cs):	Aplikace/Komunikace
