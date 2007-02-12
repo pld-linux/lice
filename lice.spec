@@ -1,5 +1,5 @@
 Summary:	Very functional script for EPIC
-Summary(pl):	Bardzo funkcjonalny skrypt do EPIC
+Summary(pl.UTF-8):   Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
 Release:	6
@@ -25,10 +25,10 @@ and enhancements that pioneered the way for a whole crowd of
 imitators. Though there is now much diversity, thousands of LiCe users
 still declare it the best script ever.
 
-%description -l pl
+%description -l pl.UTF-8
 LiCe jest skryptem przeznaczonym do pracy z klientem irca EPIC. Jest
-to bardzo funkcjonalny i popularny skrypt, oferuj±cy wiele przydatnych
-cech i w≥a∂ciwo∂ci.
+to bardzo funkcjonalny i popularny skrypt, oferujƒÖcy wiele przydatnych
+cech i w≈Ça≈õciwo≈õci.
 
 %prep
 %setup -q -a 0 -n .irc
