@@ -1,5 +1,5 @@
 Summary:	Very functional script for EPIC
-Summary(pl.UTF-8):   Bardzo funkcjonalny skrypt do EPIC
+Summary(pl.UTF-8):	Bardzo funkcjonalny skrypt do EPIC
 Name:		lice
 Version:	4.2.0
 Release:	6
